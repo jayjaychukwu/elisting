@@ -94,12 +94,19 @@ elisting/
 
 ## Setup
 
-### Prerequisites
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/jayjaychukwu/elisting.git
+cd elisting
+```
+
+### 2. Prerequisites
 
 - Docker + Docker Compose
-- (Optional) uv, only if you want to run commands on the host
+- (Optional) uv, for the pre-commit hooks and host-side commands
 
-### 1. Configure
+### 3. Configure
 
 ```bash
 cp .env.sample .env      # adjust values if needed
@@ -111,7 +118,7 @@ Postgres and `6381` for Redis, because inside the containers Postgres listens
 on `5432` and Redis on `6379`, and Redis is reached by service name; Docker
 Compose overrides both.
 
-### 2. Start everything
+### 4. Start everything
 
 ```bash
 docker compose up -d
@@ -121,7 +128,7 @@ This starts PostGIS, Redis and the API on <http://localhost:8000>. The `web`
 service applies migrations automatically. Access the docs at
 <http://localhost:8000/swagger/>.
 
-### 3. Seed demo data
+### 5. Seed demo data
 
 ```bash
 docker compose run --rm web uv run python manage.py seed_demo
@@ -140,7 +147,7 @@ prints demo credentials:
 
 Useful flags: `--count 80`, `--flush` (hard reset demo data).
 
-### 4. Explore
+### 6. Explore
 
 | URL | What |
 |---|---|
@@ -149,7 +156,7 @@ Useful flags: `--count 80`, `--flush` (hard reset demo data).
 | <http://localhost:8000/admin/> | Django admin (login as `admin`) |
 | <http://localhost:8000/api/v1/listings/> | Public list endpoint |
 
-### 5. Pre-commit hooks
+### 7. Pre-commit hooks
 
 ```bash
 uv sync
