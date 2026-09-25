@@ -1,0 +1,20 @@
+[flake8]
+max-line-length = 100
+extend-ignore =
+    # E203: black slices whitespace before ':' (not PEP 8 compliant)
+    E203,
+    # E501: line length is enforced by black
+    E501,
+    # W503: line break before binary operator, conflicts with black
+    W503
+exclude =
+    .git,
+    .venv,
+    .venv.*,
+    .ruff_cache*,
+    .pytest_cache*,
+    */migrations/*
+per-file-ignores =
+    apps/*/tests/*: D
+    # Settings modules import the base settings with a star import on purpose.
+    config/settings/*.py: F401,F403

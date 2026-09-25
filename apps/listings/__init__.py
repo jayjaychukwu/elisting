@@ -1,0 +1,1 @@
+"""Property listings domain."""
